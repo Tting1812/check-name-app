@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
-// import Calendar from 'react-calendar'
+import Calendar from 'react-calendar'
 import moment from 'moment'
+import stylesheet from '../styles/index.css'
 
 export default class CalendarPage extends Component {
   state = {
@@ -13,6 +14,7 @@ export default class CalendarPage extends Component {
   render () {  
     return (
       <div>
+        <style dangerouslySetInnerHTML={{__html: stylesheet}} />
         <div className="header">
           <img src="/static/images/skp.png" className="logo" />
         </div>
@@ -25,10 +27,11 @@ export default class CalendarPage extends Component {
           </div>
         </div>
         <div>
-          {/* <Calendar
+          <Calendar
             onChange={this.onChange}
             value={this.state.date}
-          /> */}
+            className="calendar"
+          />
         </div>
         <style jsx>{`
           .header {
