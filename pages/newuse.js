@@ -38,13 +38,22 @@ export default () =>
         background: #FDB4BF;
       }
       .logo {
-        height: 100px;
-        width: 100px;
+        height: 300px;
+        width: 300px;
         display: block;
         margin: 0 auto;
       }
       .btn {
         text-align: right;
+      }
+      form {
+        font-size: 45px;
+      }
+      input {
+        font-size: 45px;
+      }
+      button {
+        font-size: 45px;
       }
     `}</style>
   </div>

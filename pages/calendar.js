@@ -35,8 +35,8 @@ export default class CalendarPage extends Component {
             background: #FDB4BF;
           }
           .logo {
-            height: 100px;
-            width: 100px;
+            height: 300px;
+            width: 300px;
             display: block;
             margin: 0 auto;
           }
@@ -49,6 +49,7 @@ export default class CalendarPage extends Component {
             text-align: center;
             background: #A4C8F0;
             margin-top: 3px;
+            font-size: 50px;
           }
           .tab:nth-child(1) {
             margin-right: 3px;
