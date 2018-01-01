@@ -6,7 +6,7 @@ import stylesheet from '../styles/index.css'
 
 export default class CalendarPage extends Component {
   state = {
-    date: moment()
+    date: moment().format()
   }
   
   onChange = date => this.setState({ date })
