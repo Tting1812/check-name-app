@@ -4,33 +4,42 @@ export default () =>
   <div>
     <div className="header">
       <img src="/static/images/skp.png" className="logo" />
-      <div className="btn">
+      <div className="btns">
         <Link href="/newuse">
-          <button>
+          <button className="btn">
             สมัครชื่อผู้ใช้
           </button> 
         </Link>
         <Link href="/login">
-          <button>
+          <button className="btn">
             ลงชื่อเข้าใช้
           </button> 
         </Link>
       </div>
     </div>
     <div>
+    <img src="/static/images/cat.png" className="cat" />
     </div>
     <style jsx>{`
       .header {
         background: #FDB4BF;
       }
       .logo {
-        height: 100px;
-        width: 100px;
+        height: 300px;
+        width: 300px;
         display: block;
         margin: 0 auto;
       }
-      .btn {
+      .btns {
         text-align: right;
+      }
+      .btn {
+        font-size: 45px;
+      }
+      .cat {
+        height: 800px;
+        display: block;
+        margin: 0 auto;
       }
     `}</style>
   </div>
