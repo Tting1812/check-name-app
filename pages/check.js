@@ -1,20 +1,16 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
-import Calendar from 'react-calendar'
-import moment from 'moment'
 import stylesheet from '../styles/index.css'
 
-export default class CalendarPage extends Component {
+export default class Check extends Component {
   state = {
-    date: moment().format()
   }
   
-  onChange = date => this.setState({ date })
-
   onChangeTab = routeName => () => {
     Router.push(`/${routeName}`)
   }
+
 
   render () {  
     return (
@@ -24,19 +20,12 @@ export default class CalendarPage extends Component {
           <img src="/static/images/skp.png" className="logo" />
         </div>
         <div className="tabs">
-          <div className="tab action" onClick={this.onChangeTab('calendar')}>
+          <div className="tab" onClick={this.onChangeTab('calendar')}>
             ปฏิทิน
           </div>
-          <div className="tab" onClick={this.onChangeTab('check')}>
+          <div className="tab action" onClick={this.onChangeTab('check')}>
             เช็ครายชื่อ
           </div>
-        </div>
-        <div>
-          <Calendar
-            onChange={this.onChange}
-            value={this.state.date}
-            className="calendar"
-          />
         </div>
         <style jsx>{`
           .header {
