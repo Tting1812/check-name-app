@@ -3,27 +3,49 @@ import Link from 'next/link'
 import Router from 'next/router'
 import stylesheet from '../styles/index.css'
 
+const list = [
+  {
+    name: 'นายสมชาย แก้วบุญ',
+    come: true,
+    late: false,
+    absent: false,
+  },
+  {
+    name: 'นางสาวสมหญิง แก้วบุญ',
+    come: false,
+    late: false,
+    absent: true,
+  }
+]
+
 export default class Check extends Component {
   state = {
     name: '',
-    rooms: []
+    list,
   }
   
   onChangeTab = routeName => () => {
     Router.push(`/${routeName}`)
   }
 
-  onChangeRoomName = e => {
+  goto = () => {
+    Router.push('/checkname')
+  }
+
+  onChangeName = e => {
     this.setState({ name: e.target.value })
   }
 
-  gotoRoom= () => {
-    Router.push('/room')
-  }
-  addRoom = () => {
+  addName = () => {
     this.setState(prevState => {
-      const rooms = [...prevState.rooms, this.state.name]
-      return { rooms }
+      const data = {
+        name: this.state.name,
+        come: false,
+        late: false,
+        absent: false,
+      }
+      const list = [...prevState.list , data]
+      return { list }
     })
   }
 
@@ -43,19 +65,35 @@ export default class Check extends Component {
           </div>
         </div>
         <div>
-          <input className="input" value={this.state.name} onChange={this.onChangeRoomName} />
-          <button className="button" onClick={this.addRoom}>
-            +เพิ่มห้อง
+          <input className="input" value={this.state.name} onChange={this.onChangeName} />
+          <button className="button" onClick={this.addName}>
+            +เพิ่มชื่อ
           </button>
         </div>
         <div>
-          {
-            this.state.rooms.map(room => 
-              <div className="room"onClick={this.gotoRoom}>{room}</div>
-            )
-          }
+          <table className="table">
+            <tr>
+              <th>รายชื่อ</th>
+              <th>มาเรียน</th> 
+              <th>มาสาย</th>
+              <th>ขาดเรียน</th>
+            </tr>
+            {
+              this.state.list.map(l => (
+                <tr>
+                  <td>{l.name}</td>
+                  <td style={l.come ? {backgroundColor: 'green'} : {}} /> 
+                  <td style={l.late ? {backgroundColor: 'yellow'} : {}} />
+                  <td style={l.absent ? {backgroundColor: 'red'} : {}} />
+                </tr>
+              ))
+            }
+          </table>
+          <button className="button" onClick={this.goto}>
+            เช็คชื่อ
+          </button>
         </div>
-         <style jsx>{`
+        <style jsx>{`
           .header {
             background: #FDB4BF;
           }
@@ -93,9 +131,19 @@ export default class Check extends Component {
           .input{
             font-size: 50px;
           }
-          .room{
-            font-size: 60px;
+          .table {
+            width: 100%;
             margin-top: 40px;
+          }
+          .table tr {
+            font-size: 50px;
+          }
+          table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+          }
+          th, td {
+              padding: 15px;
           }
         `}</style>
       </div>
