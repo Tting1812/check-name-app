@@ -5,22 +5,10 @@ import stylesheet from '../styles/index.css'
 
 const list = [
   {
-    name: 'นายสมชาย แก้วบุญ',
-    come: true,
-    late: false,
-    absent: false,
-  },
-  {
-    name: 'นางสาวสมหญิง เสกสรรค์',
-    come: false,
-    late: false,
-    absent: true,
-  },
-  {
-    name: 'นางสาวสายใย อุ่นรักษ์',
-    come: false,
-    late: true,
-    absent: false,
+    name: '3',
+    come: 1,
+    late: 1,
+    absent: 1,
   },
 ]
 
@@ -35,7 +23,7 @@ export default class Check extends Component {
   }
 
   goto = () => {
-    Router.push('/checkname')
+    Router.push('/calendar')
   }
 
   onChangeName = e => {
@@ -71,34 +59,40 @@ export default class Check extends Component {
           </div>
         </div>
         <div>
-          <input className="input" value={this.state.name} onChange={this.onChangeName} />
-          <button className="button" onClick={this.addName}>
-            +เพิ่มชื่อ
-          </button>
-        </div>
-        <div>
           <table className="table">
             <tr>
-              <th>รายชื่อ</th>
-              <th>มาเรียน</th> 
-              <th>มาสาย</th>
-              <th>ขาดเรียน</th>
+              <th>จำนวนนักเรียนทั้งหมด</th>
+              <th>จำนวนมาเรียน</th> 
+              <th>จำนวนมาสาย</th>
+              <th>จำนวนขาดเรียน</th>
             </tr>
             {
               this.state.list.map(l => (
                 <tr>
                   <td>{l.name}</td>
-                  <td style={l.come ? {backgroundColor: 'green'} : {}} /> 
-                  <td style={l.late ? {backgroundColor: 'yellow'} : {}} />
-                  <td style={l.absent ? {backgroundColor: 'red'} : {}} />
+                  <td>{l.come}</td> 
+                  <td>{l.late}</td>
+                  <td>{l.absent}</td>
                 </tr>
               ))
             }
           </table>
-          <button className="button" onClick={this.goto}>
-            เช็คชื่อ
+         </div>
+         <div className= "people">
+           จำนวนนักเรียนทั้งหมด 100%
+         </div>
+         <div className= "people">
+           จำนวนนักเรียนที่มาเรียน 33.33%
+         </div>
+         <div className= "people">
+           จำนวนนักเรียนที่มาสาย 33.33%
+         </div>
+         <div className= "people">
+           จำนวนนักเรียนที่ขาดเรียน 33.33%
+         </div>
+         <button className="button" onClick={this.goto}>
+            บันทึกผล
           </button>
-        </div>
         <style jsx>{`
           .header {
             background: #FDB4BF;
@@ -149,7 +143,12 @@ export default class Check extends Component {
             border-collapse: collapse;
           }
           th, td {
-              padding: 15px;
+            padding: 15px;
+            text-align: center
+          }
+          .people {
+            font-size: 50px;
+            margin-top: 40px;
           }
         `}</style>
       </div>

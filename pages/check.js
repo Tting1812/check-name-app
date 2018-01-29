@@ -50,8 +50,8 @@ export default class Check extends Component {
         </div>
         <div>
           {
-            this.state.rooms.map(room => 
-              <div className="room"onClick={this.gotoRoom}>{room}</div>
+            this.state.rooms.map((room, i) => 
+              <div key={i} className="room"onClick={this.gotoRoom}>{room}</div>
             )
           }
         </div>

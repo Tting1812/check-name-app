@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
 
 const list = [
   {
@@ -9,36 +10,51 @@ const list = [
     absent: false,
   },
   {
-    name: 'นางสาวสมหญิง แก้วบุญ',
+    name: 'นางสาวสมหญิง เสกสรรค์',
     come: false,
     late: false,
     absent: true,
-  }
+  },
+  {
+    name: 'นางสาวสายใย อุ่นรักษ์',
+    come: false,
+    late: true,
+    absent: false,
+  },
 ]
 export default class CheckName extends Component {
+  state = {
+    index: 0
+  }
   come = () => {
-
+    this.setState(prevState => {
+      if (prevState.index + 1 < list.length) {
+        return { index: prevState.index + 1 }
+      } else {
+        Router.push('/comein')
+      }
+    })
   }
 
   render () {
     return (
       <div>
         <div className="name">
-          hhjgggh
+          {list[this.state.index].name}
         </div>
-        <div>
+        <div className="bbtt">
           <button className="buttonc" onClick={this.come}>
             มา
           </button>
         </div>
-        
-        <div>
+      
+        <div className="bbtt">
           <button className="buttonl" onClick={this.late}>
           สาย
           </button>
         </div>
 
-        <div>
+        <div className="bbtt">
           <button className="buttona" onClick={this.absent}>
           ขาด
           </button>
@@ -70,12 +86,16 @@ export default class CheckName extends Component {
             margin: 0 auto;
           }
           .name {
-            font-size: 100px;
-            margin-top: 70px;
-            height: 300px;
-            width: 300px;
-            display: block;
+            font-size: 50px;
+            margin-top: 100px;
+            height: 100px;
+            width: 400px;
             margin: 0 auto;
+          }
+
+          .bbtt {
+            margin-top: 40px;
+          }
         `}</style>
       </div>
     )
